@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// App.tsx
+import React from "react";
+import { SafeAreaView, StyleSheet, View, Platform } from "react-native";
+import SubtitleVideoPlayer from "./components/SubtitleVideoPlayer";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.safe}>
+      <View style={styles.center}>
+        <SubtitleVideoPlayer
+          autoPlay={false}
+          controls={false}
+          captionFontSize={18}
+          width={Platform.OS === "web" ? "98%" : "100%"}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safe: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#f0f0f0"
+  },
+  center: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 8,
   },
 });
